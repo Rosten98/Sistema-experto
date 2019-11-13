@@ -1,0 +1,7 @@
+A:Tengo trabajo
+B:Tengo dinero ahorrado
+C:Recibi aguinaldo
+---------------------
+D:Compro carro
+E:Aparto carro
+F:Voy al cine
