@@ -6,6 +6,7 @@ public class ForwardChaining{
 	public String hechosInput;
 	public Integer cardinalidad;
 	public ArrayList<String> hechos;
+	public ArrayList<String> hechosSensado = new ArrayList<String>();
 	public ArrayList<Regla> conocimientoRelevante;
 	public StringTokenizer hechosTokens;
 
@@ -32,7 +33,7 @@ public class ForwardChaining{
 		guardarHechos();
 		inferir();
 
-		System.out.println(hechos);
+		//System.out.println(hechos);
 	}
 
 	public void guardarHechos(){
@@ -51,7 +52,7 @@ public class ForwardChaining{
 
 		while(cardinalidadAnterior != cardinalidad && !conocimientoRelevante.isEmpty()){
 			cardinalidadAnterior = cardinalidad;
-			// System.out.println(conocimientoRelevante);
+			//System.out.println(conocimientoRelevante);
 
 			for(int i = 0; i < conocimientoRelevante.size(); i++){
 				inferencia = reglaParser(conocimientoRelevante.get(i).getRegla());
@@ -85,6 +86,8 @@ public class ForwardChaining{
 		StringTokenizer antecedenteConsecuente = new StringTokenizer(regla, "->");
 		String consecuente = "";
 		Integer tokens, count, noAntecedentes = 0, noHechosEncontrados = 0;
+		//Variables para el sensado
+		int hechosFaltantes=0, porcentaje=0;
 
 		tokens = antecedenteConsecuente.countTokens();
 		while(antecedenteConsecuente.hasMoreTokens()){
@@ -102,19 +105,66 @@ public class ForwardChaining{
 
 		noAntecedentes = antecedentes.size();
 
+		hechosFaltantes = antecedentes.size();
 		for(int i = 0 ; i < antecedentes.size(); i++){
 			for(int j = 0; j < hechos.size(); j++){
 				if(antecedentes.get(i).equals( hechos.get(j) )){
 					noHechosEncontrados++;
+					//Para el sensado
+					hechosFaltantes--;
 					break;
 				}
 			}
 		}
 
+
 		if(noHechosEncontrados == noAntecedentes){
 			return consecuente;
 		}else{
-			return "nulo";
+			//Sensado
+			porcentaje = hechosFaltantes*100/antecedentes.size();
+			//System.out.println(regla);
+			//System.out.println(porcentaje+"%");
+			boolean flagHecho, sensado;
+			int antecedente;
+			if(porcentaje < 35){
+				for(int i = 0 ; i < antecedentes.size(); i++){
+					flagHecho=false;
+					antecedente = i;
+					for(int j = 0; j < hechos.size(); j++){
+						if(antecedentes.get(i).equals( hechos.get(j) )){
+							flagHecho=true;
+							break;
+						}
+					}
+					if(!flagHecho) {
+						sensado = false;
+						for (int k=0; k<hechosSensado.size(); k++) {
+							if(antecedentes.get(i).equals(hechosSensado.get(k))){
+								sensado = true;
+								k=hechosSensado.size();
+							}
+						}
+						if(!sensado) {
+							hechosSensado.add(antecedentes.get(i));
+							System.out.println("Es cierto el hecho "+antecedentes.get(i)+"? (Y/N)");
+							Scanner input  = new Scanner(System.in);		
+							if(input.nextLine().equals("Y")){
+								hechosFaltantes++;
+								hechos.add(antecedentes.get(i));
+								cardinalidad = hechos.size();
+							}
+							System.out.println("----------------------------------");
+						}
+					}
+				}
+				if (hechosFaltantes == antecedentes.size())
+					return consecuente;
+				else
+					return "nulo";
+			}
+			else
+				return "nulo";
 		}
 	}
 }
