@@ -55,6 +55,7 @@ public class ForwardChaining{
 			//System.out.println(conocimientoRelevante);
 
 			for(int i = 0; i < conocimientoRelevante.size(); i++){
+				//System.out.println(conocimientoRelevante.get(i).getRegla());
 				inferencia = reglaParser(conocimientoRelevante.get(i).getRegla());
 				flag = false;
 
@@ -151,8 +152,11 @@ public class ForwardChaining{
 							Scanner input  = new Scanner(System.in);		
 							if(input.nextLine().equals("Y")){
 								hechosFaltantes++;
+								noHechosEncontrados++;
 								hechos.add(antecedentes.get(i));
 								cardinalidad = hechos.size();
+								if(noHechosEncontrados == noAntecedentes)
+									return consecuente;
 							}
 							System.out.println("----------------------------------");
 						}
