@@ -1,0 +1,29 @@
+Transtorno:
+TDAH:Trastorno por déficit de atención/hiperactividad 
+I&H->TDHA
+
+Al menos 5
+I:Inatención
+I1:		Con frecuencia falla en prestar la debida atención a detalles o por descuido se cometen errores en las tareas escolares, en el trabajo o durante otras actividades.
+I2:		Con frecuencia tiene dificultades para mantener la atención en tareas o actividades recreativas.
+I3:		Con frecuencia parece no escuchar cuando se le habla directamente.
+I4:		Con frecuencia no sigue las instrucciones y no termina las tareas escolares, los quehaceres o los deberes laborales.
+I5:		Con frecuencia tiene dificultad para organizar tareas y actividades.
+I6:		Con frecuencia evita, le disgusta o se muestra poco entusiasta en iniciar tareas que requieren un esfuerzo mental sostenido.
+I7:		Con frecuencia pierde cosas necesarias para tareas o actividades.
+I8:		Con frecuencia se distrae con facilidad por estímulos externos (para adolescentes mayores y adultos, puede incluir pensamientos no relacionados).
+I9:		Con frecuencia olvida las actividades cotidianas.
+
+Al menos 5
+H:Hiperactividad
+H1:Con frecuencia juguetea con o golpea las manos o los pies o se retuerce en el asiento. 
+H2:Con frecuencia se levanta en situaciones en que se espera que permanezca sentado. 
+H3:Con frecuencia corretea o trepa en situaciones en las que no resulta apropiado. (Nota: En adolescentes o adultos, puede limitarse a estar inquieto.) 
+H4:Con frecuencia es incapaz de jugar o de ocuparse tranquilamente en actividades recreativas. 
+H5:Con frecuencia está "ocupado," actuando como si "lo impulsara un motor". 
+H6:Con frecuencia habla excesivamente. 
+H7:Con frecuencia responde inesperadamente o antes de que se haya concluido una pregunta.
+H8:Con frecuencia le es difícil esperar su turno.
+H9:Con frecuencia interrumpe o se inmiscuye con otros.
+
+
